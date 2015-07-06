@@ -10,8 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.4.1",
+    "bluebird": "^2.9.32",
     "body-parser": "^1.13.1",
     "express": "^4.13.0",
+    "js-data": "^1.8.0",
+    "js-data-angular": "^2.4.0",
     "mongoose": "^4.0.6"
   }
 }
