@@ -153,7 +153,12 @@ var seedDB = function() {
 			return currentPost.save();
 		})
 	}).then(function() {
-		console.log('all the posts', posts)
+		return CommentModel.create(commentSeed);
+	}).then(function(userComments) {
+		comments = userComments
+		return comments
+	}).then(function() {
+		console.log('all the comments', comments)
 		process.kill(0)
 	}).then(null, function(err) {
 		console.log(err)
