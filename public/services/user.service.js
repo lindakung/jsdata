@@ -2,11 +2,12 @@
 
 app.factory('User', function(DS, DSHttpAdapter) {
 	var User = DS.defineResource({
-		name: 'user',
-		methods: {
-			addUser: function(name) {
-				return this.DS
-			}
-		}
+		name: 'user'
 	})
+
+	User.getUsers = function() {
+		return DSHttpAdapter.GET('/api/users').then(function(response) {
+			return response.data
+		})
+	}
 })

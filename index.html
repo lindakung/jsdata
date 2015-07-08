@@ -10,8 +10,17 @@
 	<body ng-app="jsdataWorkshop">
 
 	<div ng-controller="MainController">
+	
+		<div class="col-lg-8">
+			<div class="jumbotron">
+				<h1>Blog</h1>
+			</div>
+			<div ng-repeat="post in allPosts">
+				<h2>{{ post.title }}</h2>
+				{{ post.body }}
+			</div>
+		 </div>
 	</div>
-	<h1>Blog</h1>
 
 
 
@@ -25,9 +34,12 @@
 	<script src="angular/angular.js"></script>
 	<script src="js-data/dist/js-data.js"></script>
 	<script src="js-data-angular/dist/js-data-angular.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
 	<script src="main.controller.js"></script>
+	<script src="services/post.service.js"></script>
+	<script src="services/comment.service.js"></script>
 
 	</body>
 

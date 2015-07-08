@@ -2,5 +2,5 @@
 
 var app = angular.module('jsdataWorkshop', ['js-data'])
 	.config(function(DSProvider) {
-		DSProvider.defaults.basePath = '/'
+		DSProvider.defaults.basePath = '/api'
 	});

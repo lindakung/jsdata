@@ -1,3 +1,8 @@
-app.controller('MainController', function($scope) {
-	$scope.hello = "HELLO APP"
+app.controller('MainController', function($scope, DS, DSHttpAdapter, Post) {
+
+	Post.getAllPosts().then(function(posts) {
+		$scope.allPosts = posts;
+	})
+
+
 })
