@@ -143,6 +143,9 @@ var seedDB = function() {
 
 	PostModel.create(postSeed).then(function(allThePosts) {
 		posts = allThePosts;
+		return CommentModel.create(commentSeed);
+	}).then(function(userComments) {
+		comments = userComments
 		return UserModel.create(userSeed)
 	}).then(function(allTheUsers) {
 		users = allTheUsers
@@ -150,15 +153,12 @@ var seedDB = function() {
 	}).then(function(allPosts) {
 		return Promise.map(allPosts, function(currentPost) {
 			currentPost.author = randomizeUser(users);
+			currentPost.comments.push(randomizeUser(comments));
+			currentPost.comments.push(randomizeUser(comments));
+			currentPost.comments.push(randomizeUser(comments));
 			return currentPost.save();
 		})
 	}).then(function() {
-		return CommentModel.create(commentSeed);
-	}).then(function(userComments) {
-		comments = userComments
-		return comments
-	}).then(function() {
-		console.log('all the comments', comments)
 		process.kill(0)
 	}).then(null, function(err) {
 		console.log(err)
