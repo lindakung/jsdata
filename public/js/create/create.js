@@ -21,11 +21,11 @@ app.controller('CreateCtrl', function($scope, Post, User) {
 		User.create($scope.newPost.name).then(function(newUser) {
 			console.log('new author', newUser)
 		})
-			// Post.create($scope.newPost).then(function(article) {
+			Post.create($scope.newPost).then(function(article) {
 
-			// 	article.author = $scope.newPost.name;
-			// 	console.log('this is article', article)
-			// })
+				article.author = $scope.newPost.name;
+				console.log('this is article', article)
+			})
 
 
 	}
