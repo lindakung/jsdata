@@ -2,6 +2,7 @@
 
 <html>
 	<head>
+		<base href="/">
 		<title>Title</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -9,37 +10,24 @@
 
 	<body ng-app="jsdataWorkshop">
 
-	<div ng-controller="MainController">
-	
-		<div class="col-lg-8">
-			<div class="jumbotron">
-				<h1>Blog</h1>
-			</div>
-			<div ng-repeat="post in allPosts">
-				<h2>{{ post.title }}</h2>
-				{{ post.body }}
-			</div>
-		 </div>
-	</div>
+		<ui-view></ui-view>
 
 
 
-
-
-
-
-
-
-
+<!-- script go here -->
 	<script src="angular/angular.js"></script>
 	<script src="js-data/dist/js-data.js"></script>
 	<script src="js-data-angular/dist/js-data-angular.js"></script>
+	<script src="angular-ui-router/build/angular-ui-router.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
 	<script src="main.controller.js"></script>
-	<script src="services/post.service.js"></script>
-	<script src="services/comment.service.js"></script>
+	<script src="js/post/post.js"></script>
+	<script src="js/post/post.service.js"></script>
+	<script src="js/create/create.js"></script>
+	<script src="js/services/user.service.js"></script>
+	<script src="js/services/comment.service.js"></script>
 
 	</body>
 

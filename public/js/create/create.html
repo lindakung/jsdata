@@ -1,0 +1,31 @@
+<div class="col-lg-8">
+
+<div class="jumbotron">
+	<h1>Write New Post</h1>
+</div>
+
+<form ng-submit="createNewPost(newPost)" ng-model="newPost">
+	<div class="form-group">
+		<label>Title</label>
+		<input type="text" class="form-control" placeholder="Title" ng-model="newPost.title">
+	</div>
+
+	<div class="form-group">
+		<label>Author</label>
+		<input type="text" class="form-control" placeholder="Author" ng-model="newPost.name">
+	</div>
+
+	<div class="form-group">
+		<label>Body</label>
+		<textarea type="text" class="form-control" placeholder="What are you trying to say?" ng-model="newPost.body"></textarea>
+	</div>
+
+	<div class="form-group">
+	<input type="submit">
+	</div>
+</form>
+
+{{ newPost }}
+
+
+</div>

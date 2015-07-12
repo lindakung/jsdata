@@ -1,0 +1,12 @@
+<div class="col-lg-8">
+	<div class="jumbotron">
+		<h1>Articles</h1>
+		<button type="button" class="btn btn-primary" ui-sref="createPost">Write New Post</button>
+	</div>
+	<div ng-repeat="post in allPosts">
+		<h2><a href='' ui-sref="post({postId: post._id})">{{ post.title }}</a></h2>
+		<h5>Post Written By: {{ post._user.name }} on: {{ post.date | date }}</h5>
+		{{ post.body }}
+	</div>
+
+</div>

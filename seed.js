@@ -47,7 +47,7 @@ var postSeed = [
 	},
 
 	{ 
-		title: "Lafayatte Now Sells Artisonal Push-Pops",
+		title: "Lafayatte Now Sells Artisanal Push-Pops",
 		body: "Grub thought New York pastry chefs had reimagined every possible childhood-throwback dessert (with the exception of Dunkaroos, which someone should definitely make with grown-up ingredients). But now the talented Jennifer Yee at Andrew Carmellini's Lafayette has unveiled a tutti-frutti push-pop, complete with crushed macarons. It looks like the dessert will run all summer, and that this is only the first flavor of several. It's kind of brilliant."
 	},
 
@@ -168,20 +168,6 @@ var seedDB = function() {
 mongoose.connection.once('open', function() {
 	wipeDB().then(seedDB);
 })
-
-
-// return Promise.map(allUsers, function(currentUser) {
-	
-// 	currentUser.posts.push(randomizeData(posts));
-// 	currentUser.posts.push(randomizeData(posts));
-// 	currentUser.posts.push(randomizeData(posts));
-	
-// 	currentUser.comments.push(randomizeData(comments));
-// 	currentUser.comments.push(randomizeData(comments));
-// 	currentUser.comments.push(randomizeData(comments));
-	
-// 	return currentUser.save();
-// })
 
 
 

@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.4.1",
+    "angular-ui-router": "^0.2.15",
     "bluebird": "^2.9.32",
     "body-parser": "^1.13.1",
     "express": "^4.13.0",
