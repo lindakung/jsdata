@@ -8,4 +8,4 @@ app.factory('User', function(DS) {
 	})
 
 	return User; 
-}).run(function(User) {})
+})

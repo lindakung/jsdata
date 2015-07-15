@@ -6,8 +6,9 @@ app.config(function($stateProvider) {
 	})
 })
 
-app.controller('CreateCtrl', function($scope, Post, User) {
+app.controller('CreateCtrl', function($scope, Post, User, $state) {
 
+	$scope.previewTrue = false;
 
 	$scope.newPost = {
 		title: '',
@@ -15,18 +16,31 @@ app.controller('CreateCtrl', function($scope, Post, User) {
 		name: ''
 	}
 
+	$scope.preview = function() {
+		$scope.previewTrue = !$scope.previewTrue;
+	}
 
 	$scope.createNewPost = function() {
-		console.log($scope.newPost.name)
-		User.create($scope.newPost.name).then(function(newUser) {
-			console.log('new author', newUser)
+
+		User.create({ name: $scope.newPost.name }).then(function(newUser) {
+			
+			var postData = {
+				title: $scope.newPost.title,
+				body: $scope.newPost.body,
+				author: newUser._id
+			}
+
+			return Post.create(postData, {cacheResponse: false})
+
+		}).then(function(newPost) {
+
+			alert("Post sumitted successfully!")
+			$state.go('main')
+
 		})
-			Post.create($scope.newPost).then(function(article) {
-
-				article.author = $scope.newPost.name;
-				console.log('this is article', article)
-			})
-
 
 	}
+
+
+	
 }) 

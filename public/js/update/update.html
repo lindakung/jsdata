@@ -1,14 +1,14 @@
 <div class="col-lg-8">
 
 <div class="jumbotron">
-	<h1>Write New Post</h1>
+	<h1>Update Post</h1>
 </div>
+ {{thisPost}}
 
-
-<form ng-submit="createNewPost(newPost)" ng-model="newPost">
+<form ng-submit="updatePost(post)" ng-model="thisPost">
 	<div class="form-group">
 		<label>Title</label>
-		<input type="text" class="form-control" placeholder="Title" ng-model="newPost.title" required/>
+		<input type="text" class="form-control" value="thisPost.title" ng-model="thisPost.title" required/>
 	</div>
 
 	<div class="form-group">
@@ -25,17 +25,6 @@
 	<input type="submit"> <input type="button" value="Preview" ng-click="preview()">
 	</div>
 </form>
-
-<div class="container" ng-show="previewTrue">
-		<h2>Preview</h2>
-<div class="jumbotron">
-		<h2>{{ newPost.title }}</h2>
-	</div>
-
-	<h3>Author: {{ newPost.name }}</h3>
-
-	<p>{{ newPost.body }}</p>
-</div>
 
 
 </div>

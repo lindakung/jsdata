@@ -11,8 +11,7 @@ module.exports = router;
 router.get('/users', function(req, res, next) {
 	User.find().populate('posts comments').exec().then(function(users) {
 			res.json(users);
-			if(err) next(err);
-	})
+	}).then(null, next)
 })
 
 //user by id
@@ -20,46 +19,55 @@ router.get('/users', function(req, res, next) {
 router.get('/users/:id', function(req, res, next) {
 	User.findById(req.params.id).exec().then(function(user) {
 		res.json(user);
-		if(err) next(err);		
-	})
+	}).then(null, next)
 })
 
 router.post('/users', function(req, res, next) {
 	User.create(req.body).then(function(newUser) {
 		res.json(newUser);
-		if(err) next(err);
-	})
+	}).then(null, next);
+})
+
+router.put('/users', function(req, res, next) {
+	User.update({id: req.body._id}, req.body).then(function(updatedUser) {
+		res.json(updatedArticle)
+	}).then(null, next)
 })
 
 router.get('/posts', function(req, res, next) {
 	Post.find().exec().then(function(posts) {
 		res.json(posts);
-		if(err) next(err);
-	})
+	}).then(null, next)
 })
 
 router.post('/posts', function(req, res, next) {
-	console.log('REQ BODY', req.body);
 	Post.create(req.body).then(function(article) {
-		article.author = req.body.author;
 		res.json(article);
-		if(err) return next(err);
-	})
+	}).then(null, next)
+})
+
+router.put('/posts', function(req, res, next) {
+	Post.update({id: req.body._id}, req.body).then(function(updatedPost) {
+		res.json(updatedPost);
+	}).then(null, next)
 })
 
 //get post by id
 router.get('/posts/:id', function(req, res, next) {
 	Post.findById(req.params.id).then(function(post) {
 		res.json(post);
-		if(err) next(err);
-	})
+	}).then(null, next)
 })
+
 
 
 
 router.get('/comments', function(req, res, next) {
 	Comment.find().exec().then(function(comments) {
 		res.json(comments);
-		if(err) next(err);
-	})
+	}).then(null, next)
+})
+
+router.use(function(req, res) {
+	res.status(404).end();
 })
