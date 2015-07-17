@@ -3,26 +3,26 @@
 <div class="jumbotron">
 	<h1>Update Post</h1>
 </div>
- {{thisPost}}
 
-<form ng-submit="updatePost(post)" ng-model="thisPost">
+
+<form ng-submit="updatePost(post)" ng-model="editPost">
 	<div class="form-group">
 		<label>Title</label>
-		<input type="text" class="form-control" value="thisPost.title" ng-model="thisPost.title" required/>
+		<input type="text" class="form-control" ng-model="editPost.title" required/>
 	</div>
 
 	<div class="form-group">
 		<label>Author</label>
-		<input type="text" class="form-control" placeholder="Author" ng-model="newPost.name" required />
+		<input type="text" class="form-control" ng-model="editPost._user.name" required />
 	</div>
 
 	<div class="form-group">
 		<label>Body</label>
-		<textarea type="text" class="form-control" placeholder="What are you trying to say?" ng-model="newPost.body" required /></textarea>
+		<textarea type="text" class="form-control" ng-model="editPost.body" required /></textarea>
 	</div>
 
 	<div class="form-group">
-	<input type="submit"> <input type="button" value="Preview" ng-click="preview()">
+	<input type="submit" value="Update">
 	</div>
 </form>
 

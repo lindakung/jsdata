@@ -28,9 +28,10 @@ router.post('/users', function(req, res, next) {
 	}).then(null, next);
 })
 
-router.put('/users', function(req, res, next) {
+router.put('/users/:id', function(req, res, next) {
+	console.log('hitting user update', req.body)
 	User.update({id: req.body._id}, req.body).then(function(updatedUser) {
-		res.json(updatedArticle)
+		res.json(updatedUser)
 	}).then(null, next)
 })
 
@@ -46,7 +47,8 @@ router.post('/posts', function(req, res, next) {
 	}).then(null, next)
 })
 
-router.put('/posts', function(req, res, next) {
+router.put('/posts/:id', function(req, res, next) {
+	console.log('getting here?', req.body)
 	Post.update({id: req.body._id}, req.body).then(function(updatedPost) {
 		res.json(updatedPost);
 	}).then(null, next)
