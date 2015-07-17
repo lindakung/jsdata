@@ -28,12 +28,12 @@ router.post('/users', function(req, res, next) {
 	}).then(null, next);
 })
 
-router.put('/users/:id', function(req, res, next) {
-	console.log('hitting user update', req.body)
-	User.update({id: req.body._id}, req.body).then(function(updatedUser) {
-		res.json(updatedUser)
-	}).then(null, next)
-})
+// router.put('/users/:id', function(req, res, next) {
+// 	console.log('hitting user update', req.body)
+// 	User.update({id: req.body._id}, req.body).then(function(updatedUser) {
+// 		res.json(updatedUser)
+// 	}).then(null, next)
+// })
 
 router.get('/posts', function(req, res, next) {
 	Post.find().exec().then(function(posts) {
@@ -48,10 +48,31 @@ router.post('/posts', function(req, res, next) {
 })
 
 router.put('/posts/:id', function(req, res, next) {
-	console.log('getting here?', req.body)
-	Post.update({id: req.body._id}, req.body).then(function(updatedPost) {
+	var post;
+	Post.findOne({_id: req.params.id}).exec()
+	.then(function(foundPost) {
+		post = foundPost;
+		return User.findOne({name: req.body.name}).exec()
+	})
+	.then(function(user) {
+		if (!user) {
+			return User.create({name: req.body.name})
+			.then(function(newUser) {
+				post.author = newUser._id;
+				post.title = req.body.title;
+				return post.save()
+			})
+		} else {
+			post.author = user._id;
+			post.title = req.body.title;
+			return post.save()
+		}
+	})
+	.then(function(updatedPost) {
+		console.log('updated', updatedPost)
 		res.json(updatedPost);
-	}).then(null, next)
+	})
+	.then(null, next)
 })
 
 //get post by id
@@ -61,7 +82,12 @@ router.get('/posts/:id', function(req, res, next) {
 	}).then(null, next)
 })
 
-
+router.delete('/posts/:id', function(req, res, next) {
+	Post.findById(req.params.id).then(function(post) {
+		console.log('post removed?', post)
+		post.remove()
+	}).then(null, next)
+})
 
 
 router.get('/comments', function(req, res, next) {

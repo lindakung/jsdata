@@ -4,9 +4,9 @@ app.config(function($stateProvider) {
 		resolve: {
 			allPosts: function(User, Post) {
 				console.log('hello')
-				return User.findAll()
+				return User.findAll({cacheResponse: false})
 				.then(function(users){
-					return Post.findAll()
+					return Post.findAll({cacheResponse: false})
 				})
 			}
 		},

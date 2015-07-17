@@ -3,7 +3,7 @@
 	<div class="jumbotron">
 		<h2>{{ thisPost.title }}</h2>
 		<button type="button" class="btn btn-primary" ui-sref="update({ postId: thisPost._id })">Edit</button>
-		<button type="button" class="btn btn-primary btn-danger" ng-click="delete(thisPost._id)">Delete</button>
+		<button type="button" class="btn btn-primary btn-danger" ng-click="delete()">Delete</button>
 	</div>
 
 	<h3>Author: {{ thisPost._user.name }}</h3>

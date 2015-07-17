@@ -6,11 +6,17 @@ app.config(function($stateProvider) {
 	})
 });
 
-app.controller('PostCtrl', function($scope, $stateParams, Post) {
+app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
 
 	Post.find($stateParams.postId)
 		.then(function(post) {
 			$scope.thisPost = post;
 		})
+
+	$scope.delete = function() {
+		Post.destroy($stateParams.postId)
+		alert('Post deleted!')
+		$state.go('main')
+	}
 
 })

@@ -14,13 +14,13 @@ app.controller('UpdateCtrl', function($scope, $stateParams, Post, User) {
 			$scope.editPost = post;
 			return User.find(post.author)
 	}).then(function(thisUser) {
-		var updatedTitle = $scope.editPost.title;
-
-		$scope.updatePost = function() {
-			console.log('updated input name', updatedTitle)
-			Post.update($scope.editPost._id, {title: updatedTitle})
-		}
 	})
+		
+	$scope.updatePost = function() {
+		Post.update($scope.editPost._id, {title: $scope.editPost.title, name: $scope.editPost._user.name})
+		alert('Your post was updated!')
+		$state.go('main')
+	}
 
 
 
