@@ -18,7 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-app.use('/api', require('./routes'));
+// app.use('/api', require('./routes'));
+
+app.use('/api/posts', require('./routes/posts'))
+app.use('/api/users', require('./routes/users'))
+app.use('/api/comments', require('./routes/comments'))
+
+
 
 app.get('/*', function(req, res) {
 	res.sendFile(indexHtmlPath);
