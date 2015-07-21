@@ -8,7 +8,7 @@ app.config(function($stateProvider) {
 	})
 })
 
-app.controller('CreateCtrl', function($scope, Post, User, $state, growl) {
+app.controller('CreateCtrl', function($scope, Post, User, $state) {
 
 	$scope.previewTrue = false;
 
@@ -36,7 +36,7 @@ app.controller('CreateCtrl', function($scope, Post, User, $state, growl) {
 
 		}).then(function(newPost) {
 
-			growl.success("Post sumitted successfully!")
+			// growl.success("Post sumitted successfully!")
 			$state.go('main')
 
 		})

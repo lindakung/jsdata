@@ -8,7 +8,7 @@ app.config(function($stateProvider) {
 	})
 });
 
-app.controller('PostCtrl', function($scope, $stateParams, Post, $state, growl) {
+app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
 
 	Post.find($stateParams.postId)
 		.then(function(post) {
@@ -17,7 +17,7 @@ app.controller('PostCtrl', function($scope, $stateParams, Post, $state, growl) {
 
 	$scope.delete = function() {
 		Post.destroy($stateParams.postId)
-		growl.success('Post deleted')
+		// growl.success('Post deleted')
 		alert('Post deleted!')  //use the growl service 
 		$state.go('main')
 	}

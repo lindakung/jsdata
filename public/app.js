@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('jsdataWorkshop', ['js-data', 'ui.router', 'angular-growl'])
+var app = angular.module('jsdataWorkshop', ['js-data', 'ui.router'])
   .config(function(DSProvider, $urlRouterProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
@@ -48,8 +48,8 @@ var app = angular.module('jsdataWorkshop', ['js-data', 'ui.router', 'angular-gro
     }
 
   })
-  .config(function(growlProvider) {
-    growlProvider.globalTimeToLive(4000);
-  });
+  // .config(function(growlProvider) {
+  //   growlProvider.globalTimeToLive(4000);
+  // });
 
-  
+
