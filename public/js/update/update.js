@@ -1,3 +1,5 @@
+'use strict'; 
+
 app.config(function($stateProvider) {
 	$stateProvider.state('update', {
 		url: '/update/:postId',
@@ -6,7 +8,7 @@ app.config(function($stateProvider) {
 	})
 })
 
-app.controller('UpdateCtrl', function($scope, $stateParams, Post, User) {
+app.controller('UpdateCtrl', function($scope, $stateParams, Post, User, growl) {
 
 	//get all posts
 	Post.find($stateParams.postId)
@@ -18,7 +20,7 @@ app.controller('UpdateCtrl', function($scope, $stateParams, Post, User) {
 		
 	$scope.updatePost = function() {
 		Post.update($scope.editPost._id, {title: $scope.editPost.title, name: $scope.editPost._user.name})
-		alert('Your post was updated!')
+		growl.success('Your post was updated!')
 		$state.go('main')
 	}
 

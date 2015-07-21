@@ -1,3 +1,5 @@
+'use strict'; 
+
 app.config(function($stateProvider) {
 	$stateProvider.state('post', {
 		url: '/post/:postId',
@@ -6,7 +8,7 @@ app.config(function($stateProvider) {
 	})
 });
 
-app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
+app.controller('PostCtrl', function($scope, $stateParams, Post, $state, growl) {
 
 	Post.find($stateParams.postId)
 		.then(function(post) {
@@ -15,7 +17,8 @@ app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
 
 	$scope.delete = function() {
 		Post.destroy($stateParams.postId)
-		alert('Post deleted!')
+		growl.success('Post deleted')
+		alert('Post deleted!')  //use the growl service 
 		$state.go('main')
 	}
 
