@@ -49,12 +49,15 @@ router.post('/posts', function(req, res, next) {
 
 router.put('/posts/:id', function(req, res, next) {
 	var post;
+	console.log('req: ', req.body)
 	Post.findOne({_id: req.params.id}).exec()
 	.then(function(foundPost) {
+		console.log('found: ', foundPost)
 		post = foundPost;
-		return User.findOne({name: req.body.name}).exec()
+		return User.findOne({name: req.body.userName}).exec()
 	})
 	.then(function(user) {
+		console.log('user: ', user)
 		if (!user) {
 			return User.create({name: req.body.name})
 			.then(function(newUser) {
@@ -65,6 +68,7 @@ router.put('/posts/:id', function(req, res, next) {
 		} else {
 			post.author = user._id;
 			post.title = req.body.title;
+			post.body = req.body.body; 
 			return post.save()
 		}
 	})

@@ -1,3 +1,5 @@
+'use strict'; 
+
 app.config(function($stateProvider) {
 	$stateProvider.state('createPost', {
 		url: '/createPost',
@@ -34,7 +36,7 @@ app.controller('CreateCtrl', function($scope, Post, User, $state) {
 
 		}).then(function(newPost) {
 
-			alert("Post sumitted successfully!")
+			// growl.success("Post sumitted successfully!")
 			$state.go('main')
 
 		})
