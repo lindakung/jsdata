@@ -1,5 +1,6 @@
+'use strict';
+
 var mongoose = require('mongoose');
-var User = require('./user-model.js');
 
 var schema = new mongoose.Schema({
 	title: {
