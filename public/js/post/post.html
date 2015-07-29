@@ -1,6 +1,8 @@
-<div class="col-lg-8">
+<div class="mainBody">
 
-	<div class="jumbotron">
+<div class="col-lg-12">
+
+	<div class="postTitle">
 		<h2>{{ thisPost.title }}</h2>
 		<button type="button" class="btn btn-primary" ui-sref="update({ postId: thisPost._id })">Edit</button>
 		<button type="button" class="btn btn-primary btn-danger" ng-click="delete()">Delete</button>
@@ -12,4 +14,5 @@
 
 	<a ui-sref="main">Back to All Posts</a>
 
+</div>
 </div>

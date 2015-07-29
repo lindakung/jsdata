@@ -14,6 +14,15 @@
 	color: #c1073f;
 }
 
+.postTitle {
+	color: #395075;
+}
+
+
+h1.profile {
+	padding-left: 30px;
+}
+
 
 #login-form {
 	padding-top: 80px;
