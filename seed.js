@@ -1,7 +1,7 @@
 var userSeed = [
-	{ name: 'Amon' },
-	{ name: 'Loke' },
-	{ name: 'Maia' }
+	{ name: 'Amon', password: 'noma' },
+	{ name: 'Loke', password: 'ekol' },
+	{ name: 'Maia', password: 'aiam' }
 ];
 
 var postSeed = [
@@ -104,9 +104,9 @@ var commentSeed = [
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 
-var UserModel = require('./server/models/user-model');
-var PostModel = require('./server/models/post-model');
-var CommentModel = require('./server/models/comment-model');
+var UserModel = require('./server/routes/users/user-model');
+var PostModel = require('./server/routes/posts/post-model');
+var CommentModel = require('./server/routes/comments/comment-model');
 
 mongoose.connect('mongodb://localhost/jsdata');
 

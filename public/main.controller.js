@@ -19,6 +19,8 @@ app.controller('MainController', function($scope, Post, User, allPosts) {
 
 	// api/posts/
 
+	$scope.user = true;
+
 	$scope.allPosts = allPosts;
 
 	// User.findAll()
