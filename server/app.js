@@ -19,8 +19,6 @@ var indexHtmlPath = path.join(__dirname, '../index.html');
 app.use(express.static(publicPath));
 app.use(express.static(nodeModulesPath));
 
-require('../server/config/passport')(passport);
-
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -38,7 +36,6 @@ app.use('/api/posts', require('./routes/posts'))
 app.use('/api/users', require('./routes/users'))
 app.use('/api/comments', require('./routes/comments'))
 
-require('./routes/authentication')(app, passport);
 
 
 app.get('/*', function(req, res) {
