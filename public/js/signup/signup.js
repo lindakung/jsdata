@@ -11,9 +11,5 @@ app.config(function($stateProvider) {
 
 app.controller('SignupCtrl', function($scope) {
 
-	// $scope.login = {};
 
-	// $scope.sendLogin = function(userInfo) {
-	// 	console.log('userInfo', userInfo)
-	// }
 })
