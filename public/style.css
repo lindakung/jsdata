@@ -1,0 +1,24 @@
+#titleSection {
+	text-align: center;
+	padding-top: 50px;
+	width: 900px;
+}
+
+.mainBody {
+	width: 900px;
+	padding-top: 55px;
+	margin: 0 auto;
+}
+
+.title {
+	color: #c1073f;
+}
+
+.postTitle {
+	color: #395075;
+}
+
+
+h1.profile {
+	padding-left: 30px;
+}

@@ -1,12 +1,24 @@
-<div class="col-lg-8">
-	<div class="jumbotron">
-		<h1>Articles</h1>
-		<button type="button" class="btn btn-primary" ui-sref="createPost">Write New Post</button>
-	</div>
-	<div ng-repeat="post in allPosts">
-		<h2><a href='' ui-sref="post({postId: post._id})">{{ post.title }}</a></h2>
-		<h5>Post Written By: {{ post._user.name }} on: {{ post.date | date }}</h5>
-		{{ post.body }}
+<section id="mainSection">
+	<div class="row">
+	<div class="mainBody">
+
+	<div class="col-lg-4">
+
+		<div class="mainBody">
+			<h1 class="profile">BLOG TITLE</h1>
+			<div class="profileImg"><img class="profileImg" src="http://strangebeaver.com/wp-content/uploads/2011/01/fb/10.jpg"></div>
+		</div>
 	</div>
 
+	<div class="col-lg-8">
+
+		<div ng-repeat="post in allPosts">
+			<h3><a href='' ui-sref="post({postId: post._id})">{{ post.title }}</a></h3>
+			<h5>Post Written By: {{ post._user.name }} on: {{ post.date | date }}</h5>
+			{{ post.body }}
+		</div>
+
+	</div>
+	</div>
 </div>
+</section>
