@@ -10,16 +10,16 @@ app.config(function($stateProvider) {
 
 app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
 
-	Post.find($stateParams.postId)
-		.then(function(post) {
-			$scope.thisPost = post;
-		})
+	// Post.find($stateParams.postId)
+	// 	.then(function(post) {
+	// 		$scope.thisPost = post;
+	// 	})
 
-	$scope.delete = function() {
-		Post.destroy($stateParams.postId)
-		// growl.success('Post deleted')
-		alert('Post deleted!')  //use the growl service 
-		$state.go('main')
-	}
+	// $scope.delete = function() {
+	// 	Post.destroy($stateParams.postId)
+	// 	// growl.success('Post deleted')
+	// 	alert('Post deleted!')  //use the growl service 
+	// 	$state.go('main')
+	// }
 
 })

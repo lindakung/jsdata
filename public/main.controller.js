@@ -2,12 +2,12 @@ app.config(function($stateProvider) {
 	$stateProvider.state('main', {
 		url: '/',
 		resolve: {
-			allPosts: function(User, Post) {
-				console.log('hello')
-				return User.findAll({cacheResponse: false})
-				.then(function(users){
-					return Post.findAll({cacheResponse: false})
-				})
+			users: function(User){
+				return User.findAll()
+			},
+			posts: function(Post, users) {
+				// GET --> /api/posts
+				return Post.findAll()
 			}
 		},
 		templateUrl: '/main.html',
@@ -15,20 +15,10 @@ app.config(function($stateProvider) {
 	})
 })
 
-app.controller('MainController', function($scope, Post, User, allPosts) {
-
-	// api/posts/
+app.controller('MainController', function($scope, posts) {
 
 	$scope.user = true;
-
-	$scope.allPosts = allPosts;
-
-	// User.findAll()
-	// .then(function(users){
-	// 	Post.findAll().then(function(posts) {
-	// 		$scope.allPosts = posts;
-	// 		console.log('allPosts', posts)
-	// 	})
-	// })
+	$scope.allPosts = posts;
+	// console.log('posts; ', posts)
 
 })

@@ -6,8 +6,8 @@ app.factory('Post', function(DS) {
 		relations: {
 			belongsTo: {
 				users: {
-					localKey: 'author',
-					localField: '_user'
+					localKey: 'authorId',
+					localField: 'author'
 					}
 			}
 		}

@@ -22,26 +22,26 @@ app.controller('CreateCtrl', function($scope, Post, User, $state) {
 		$scope.previewTrue = !$scope.previewTrue;
 	}
 
-	$scope.createNewPost = function() {
+	// $scope.createNewPost = function() {
 
-		User.create({ name: $scope.newPost.name }).then(function(newUser) {
+	// 	User.create({ name: $scope.newPost.name }).then(function(newUser) {
 			
-			var postData = {
-				title: $scope.newPost.title,
-				body: $scope.newPost.body,
-				author: newUser._id
-			}
+	// 		var postData = {
+	// 			title: $scope.newPost.title,
+	// 			body: $scope.newPost.body,
+	// 			author: newUser._id
+	// 		}
 
-			return Post.create(postData, {cacheResponse: false})
+	// 		return Post.create(postData, {cacheResponse: false})
 
-		}).then(function(newPost) {
+	// 	}).then(function(newPost) {
 
-			// growl.success("Post sumitted successfully!")
-			$state.go('main')
+	// 		// growl.success("Post sumitted successfully!")
+	// 		$state.go('main')
 
-		})
+	// 	})
 
-	}
+	// }
 
 
 	

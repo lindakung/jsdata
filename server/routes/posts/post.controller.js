@@ -32,15 +32,12 @@ module.exports = {
 
   update: function(req, res, next){
     var post;
-    console.log('req: ', req.body)
     Post.findOne({_id: req.params.id}).exec()
     .then(function(foundPost) {
-      console.log('found: ', foundPost)
       post = foundPost;
       return User.findOne({name: req.body.userName}).exec()
     })
     .then(function(user) {
-      console.log('user: ', user)
       if (!user) {
         return User.create({name: req.body.name})
         .then(function(newUser) {
@@ -56,7 +53,6 @@ module.exports = {
       }
     })
     .then(function(updatedPost) {
-      console.log('updated', updatedPost)
       res.json(updatedPost);
     })
     .then(null, next)
