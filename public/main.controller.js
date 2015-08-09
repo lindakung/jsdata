@@ -19,6 +19,6 @@ app.controller('MainController', function($scope, posts) {
 
 	$scope.user = true;
 	$scope.allPosts = posts;
-	// console.log('posts; ', posts)
+	console.log('posts; ', posts)
 
 })

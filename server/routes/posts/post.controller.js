@@ -23,6 +23,7 @@ module.exports = {
   },
 
   create: function(req, res, next){
+    req.body.author = "55ae90ec395b2b9078628da4";
     Post.create(req.body)
     .then(function(article) {
       res.json(article);

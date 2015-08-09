@@ -13,8 +13,8 @@
 	<div class="col-lg-8">
 
 		<div ng-repeat="post in allPosts">
-			<h3><a href='' ui-sref="post({postId: post._id})">{{ post.title }}</a></h3>
-			<h5>Post Written By: {{ post._user.name }} on: {{ post.date | date }}</h5>
+			<h3><a ng-click="post.go()">{{ post.title }}</a></h3>
+			<h5>Post Written By: {{ post.author.name }} on: {{ post.date | date }}</h5>
 			{{ post.body }}
 		</div>
 

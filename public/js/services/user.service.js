@@ -2,9 +2,8 @@
 
 app.factory('User', function(DS) {
 	
-	var User = DS.defineResource({
+	return DS.defineResource({
 		name: 'users'
 	})
 
-	return User; 
-})
+}).run(function (User) {})

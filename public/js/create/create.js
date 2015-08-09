@@ -4,44 +4,44 @@ app.config(function($stateProvider) {
 	$stateProvider.state('createPost', {
 		url: '/createPost',
 		templateUrl: 'js/create/create.html',
-		controller: 'CreateCtrl'
+		controller: 'CreateCtrl', 
+		resolve: {
+			author: function(User){
+				return User.find("55ae90ec395b2b9078628da4")
+			}
+		}
 	})
 })
 
-app.controller('CreateCtrl', function($scope, Post, User, $state) {
+app.controller('CreateCtrl', function($scope, Post, author, $state) {
 
 	$scope.previewTrue = false;
 
 	$scope.newPost = {
 		title: '',
 		body: '',
-		name: ''
+		name: author.name
 	}
 
 	$scope.preview = function() {
 		$scope.previewTrue = !$scope.previewTrue;
 	}
 
-	// $scope.createNewPost = function() {
+	$scope.createNewPost = function() {
 
-	// 	User.create({ name: $scope.newPost.name }).then(function(newUser) {
-			
-	// 		var postData = {
-	// 			title: $scope.newPost.title,
-	// 			body: $scope.newPost.body,
-	// 			author: newUser._id
-	// 		}
+			var postData = {
+				title: $scope.newPost.title,
+				body: $scope.newPost.body
+			}
 
-	// 		return Post.create(postData, {cacheResponse: false})
+			return Post.create(postData)
+			.then(function(newPost) {
+				console.log('new: ', newPost)
+				$state.go('main')
 
-	// 	}).then(function(newPost) {
+		})
 
-	// 		// growl.success("Post sumitted successfully!")
-	// 		$state.go('main')
-
-	// 	})
-
-	// }
+	}
 
 
 	
