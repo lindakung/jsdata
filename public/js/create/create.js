@@ -28,21 +28,14 @@ app.controller('CreateCtrl', function($scope, Post, author, $state) {
 	}
 
 	$scope.createNewPost = function() {
+		var postData = {
+			title: $scope.newPost.title,
+			body: $scope.newPost.body
+		}
 
-			var postData = {
-				title: $scope.newPost.title,
-				body: $scope.newPost.body
-			}
-
-			return Post.create(postData)
-			.then(function(newPost) {
-				console.log('new: ', newPost)
-				$state.go('main')
-
+		Post.create(postData)
+		.then(function(newPost) {
+			$state.go('main')
 		})
-
-	}
-
-
-	
+	}	
 }) 
