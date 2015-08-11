@@ -22,7 +22,7 @@ app.controller('PostCtrl', function($scope, $stateParams, Post, $state, users) {
 			$scope.thisPost = post;
 		})
 
-	$scope.delete = function(post) {
+	$scope.delete = function() {
 		Post.destroy($stateParams.postId)
 		.then(function(){
 			alert('Post deleted!') 
