@@ -4,12 +4,19 @@ app.config(function($stateProvider) {
 	$stateProvider.state('post', {
 		url: '/post/:postId',
 		templateUrl: 'js/post/post.html',
-		controller: 'PostCtrl'
+		controller: 'PostCtrl', 
+		resolve: {
+			users: function(User){
+				// GET - > '/api/users'
+				return User.findAll()
+			}
+		}
 	})
 });
 
-app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
+app.controller('PostCtrl', function($scope, $stateParams, Post, $state, users) {
 
+	// GET --> /api/posts/:postId   retrieve single post 
 	Post.find($stateParams.postId)
 		.then(function(post) {
 			$scope.thisPost = post;
@@ -17,9 +24,10 @@ app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
 
 	$scope.delete = function() {
 		Post.destroy($stateParams.postId)
-		// growl.success('Post deleted')
-		alert('Post deleted!')  //use the growl service 
-		$state.go('main')
+		.then(function(){
+			alert('Post deleted!') 
+			$state.go('main')
+		})
 	}
 
 })

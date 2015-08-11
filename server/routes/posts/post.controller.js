@@ -30,42 +30,13 @@ module.exports = {
     .then(null, next)
   }, 
 
-  update: function(req, res, next){
-    var post;
-    console.log('req: ', req.body)
-    Post.findOne({_id: req.params.id}).exec()
-    .then(function(foundPost) {
-      console.log('found: ', foundPost)
-      post = foundPost;
-      return User.findOne({name: req.body.userName}).exec()
-    })
-    .then(function(user) {
-      console.log('user: ', user)
-      if (!user) {
-        return User.create({name: req.body.name})
-        .then(function(newUser) {
-          post.author = newUser._id;
-          post.title = req.body.title;
-          return post.save()
-        })
-      } else {
-        post.author = user._id;
-        post.title = req.body.title;
-        post.body = req.body.body; 
-        return post.save()
-      }
-    })
-    .then(function(updatedPost) {
-      console.log('updated', updatedPost)
-      res.json(updatedPost);
-    })
-    .then(null, next)
-  }, 
-
   destroy: function(req, res, next){
-    Post.findById(req.params.id).then(function(post) {
-      console.log('post removed?', post)
-      post.remove()
+    Post.findById(req.params.id)
+    .then(function(post) {
+      return post.remove()
+    })
+    .then(function(){
+      res.status(204).end()
     })
     .then(null, next)
   }

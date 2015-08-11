@@ -32,16 +32,4 @@ module.exports = {
     .then(null, next)
   }
 
-  // update: function(req, res, next){
-   
-  // }, 
-
-  // destroy: function(req, res, next){
-  //   Post.findById(req.params.id).then(function(post) {
-  //     console.log('post removed?', post)
-  //     post.remove()
-  //   })
-  //   .then(null, next)
-  // }
-
 }
