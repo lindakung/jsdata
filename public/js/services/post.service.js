@@ -8,14 +8,13 @@ app.factory('Post', function(DS, $state) {
 			belongsTo: {
 				users: {
 					localKey: 'authorId',
-					localField: 'author'
-				}
+					localField: 'author' 
+				} 
 			}
 		}, 
 		// functionality added to the prototype of every
 		methods: {
 			go: function (){
-				console.log('in here: ', this)
 				$state.go('post', {
 					postId: this._id, 
 					authorId: this.authorId

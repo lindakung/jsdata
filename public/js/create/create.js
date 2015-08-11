@@ -30,7 +30,8 @@ app.controller('CreateCtrl', function($scope, Post, author, $state) {
 	$scope.createNewPost = function() {
 		var postData = {
 			title: $scope.newPost.title,
-			body: $scope.newPost.body
+			body: $scope.newPost.body, 
+			author: author._id
 		}
 
 		Post.create(postData)
