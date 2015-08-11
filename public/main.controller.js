@@ -24,3 +24,5 @@ app.controller('MainController', function($scope, posts) {
 	console.log('posts: ', posts)
  
 })
+
+

@@ -16,7 +16,7 @@ app.config(function($stateProvider) {
 
 app.controller('PostCtrl', function($scope, $stateParams, Post, $state, users) {
 
-	// GET --> /api/posts/:id   retrieve single post 
+	// GET --> /api/posts/:postId   retrieve single post 
 	Post.find($stateParams.postId)
 		.then(function(post) {
 			$scope.thisPost = post;
