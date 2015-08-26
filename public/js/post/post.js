@@ -8,18 +8,26 @@ app.config(function($stateProvider) {
 	})
 });
 
-app.controller('PostCtrl', function($scope, $stateParams, Post, $state) {
+// add necessary dependencies 
+app.controller('PostCtrl', function() {
 
-	Post.find($stateParams.postId)
-		.then(function(post) {
-			$scope.thisPost = post;
-		})
 
-	$scope.delete = function() {
-		Post.destroy($stateParams.postId)
-		// growl.success('Post deleted')
-		alert('Post deleted!')  //use the growl service 
-		$state.go('main')
-	}
+	/* 1. FIND POST
+		use state params to retrieve the post id and attach post object to scope 
+		on controller load 
+	*/
+
+	/*
+		2. DELETE POST 
+		create a function that destroys the post, adds an alert that the post has been 
+		successfully deleted, and redirects to the main state. 
+	*/
+
+	/*
+		3. EDIT POST 
+		create a function that edits the post, adds an alert that the post has been 
+		successfully edited, and displays the edited post.  
+
+	*/
 
 })

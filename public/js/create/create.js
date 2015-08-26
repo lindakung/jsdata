@@ -8,7 +8,8 @@ app.config(function($stateProvider) {
 	})
 })
 
-app.controller('CreateCtrl', function($scope, Post, User, $state) {
+// add necessary dependencies here 
+app.controller('CreateCtrl', function($scope) {
 
 	$scope.previewTrue = false;
 
@@ -22,27 +23,13 @@ app.controller('CreateCtrl', function($scope, Post, User, $state) {
 		$scope.previewTrue = !$scope.previewTrue;
 	}
 
-	$scope.createNewPost = function() {
+	/*
 
-		User.create({ name: $scope.newPost.name }).then(function(newUser) {
-			
-			var postData = {
-				title: $scope.newPost.title,
-				body: $scope.newPost.body,
-				author: newUser._id
-			}
+	create a function that 
+	1 - creates the user if it isn't already in the db
+	2 - persists the ng-modeled post object 
+	3 - changes the state to 'main' 
 
-			return Post.create(postData, {cacheResponse: false})
-
-		}).then(function(newPost) {
-
-			// growl.success("Post sumitted successfully!")
-			$state.go('main')
-
-		})
-
-	}
-
-
+	*/
 	
 }) 

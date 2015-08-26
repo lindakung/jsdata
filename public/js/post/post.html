@@ -3,14 +3,20 @@
 <div class="col-lg-12">
 
 	<div class="postTitle">
-		<h2>{{ thisPost.title }}</h2>
-		<button type="button" class="btn btn-primary" ui-sref="update({ postId: thisPost._id })">Edit</button>
-		<button type="button" class="btn btn-primary btn-danger" ng-click="delete()">Delete</button>
+    <!-- display the post title -->
+		<h2></h2>
+    <!-- add functionality that makes this Edit button work -->
+		<button type="button" class="btn btn-primary">Edit</button>
+
+    <!-- add functionality that makes this Delete button work -->
+		<button type="button" class="btn btn-primary btn-danger">Delete</button>
 	</div>
 
-	<h3>Author: {{ thisPost._user.name }}</h3>
+  <!-- display the user's name by accessing the user object embedded in the post -->
+	<h3></h3>
 
-	<p>{{ thisPost.body }}</p>
+  <!-- display the post body -->
+	<p></p>
 
 	<a ui-sref="main">Back to All Posts</a>
 
