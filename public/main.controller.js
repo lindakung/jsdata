@@ -4,25 +4,20 @@ app.config(function($stateProvider) {
 	$stateProvider.state('main', {
 		url: '/',
 		templateUrl: '/main.html',
-		controller: 'MainController',
-		resolve: {
-			users: function(User){
-				// GET --> /api/users
-				return User.findAll()
-			},
-			posts: function(Post, users) {
-				// GET --> /api/posts
-				return Post.findAll({}, {bypassCache: true})
-			}
-		}
+		controller: 'MainController'
+			// RESOLVE!
 	})
 })
 
-app.controller('MainController', function($scope, posts) {
+app.controller('MainController', function($scope) {
 
-	$scope.allPosts = posts;
-	console.log('posts: ', posts)
- 
+ 	/*
+		TODOS: 
+		1 - use js-data to retrieve all users and all posts
+		(HINT: if you want to be fancy, add a resolve block to this state 
+		and retrieve the data there)
+
+ 	*/
 })
 
 

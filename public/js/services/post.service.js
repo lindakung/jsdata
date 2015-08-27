@@ -14,6 +14,6 @@ app.factory('Post', function(DS) {
 
 	*/
 
-}).run(function (Post) {})
+});
 
 
