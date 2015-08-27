@@ -1,4 +1,4 @@
-'use strict';
+'use  strict';
 
 app.factory('User', function(DS) {
 	
@@ -7,3 +7,4 @@ app.factory('User', function(DS) {
   */
 
 }).run(function(User) {})
+

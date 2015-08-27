@@ -1,34 +1,28 @@
+'use strict';
+
 app.config(function($stateProvider) {
 	$stateProvider.state('main', {
 		url: '/',
-		resolve: {
-			allPosts: function(User, Post) {
-				console.log('hello')
-				return User.findAll({cacheResponse: false})
-				.then(function(users){
-					return Post.findAll({cacheResponse: false})
-				})
-			}
-		},
 		templateUrl: '/main.html',
-		controller: 'MainController'
+		controller: 'MainController',
+		resolve: {
+			users: function(User){
+				// GET --> /api/users
+				return User.findAll()
+			},
+			posts: function(Post, users) {
+				// GET --> /api/posts
+				return Post.findAll({}, {bypassCache: true})
+			}
+		}
 	})
 })
 
-app.controller('MainController', function($scope, Post, User, allPosts) {
+app.controller('MainController', function($scope, posts) {
 
-	// api/posts/
-
-	$scope.user = true;
-
-	$scope.allPosts = allPosts;
-
-	// User.findAll()
-	// .then(function(users){
-	// 	Post.findAll().then(function(posts) {
-	// 		$scope.allPosts = posts;
-	// 		console.log('allPosts', posts)
-	// 	})
-	// })
-
+	$scope.allPosts = posts;
+	console.log('posts: ', posts)
+ 
 })
+
+

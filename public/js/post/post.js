@@ -4,7 +4,13 @@ app.config(function($stateProvider) {
 	$stateProvider.state('post', {
 		url: '/post/:postId',
 		templateUrl: 'js/post/post.html',
-		controller: 'PostCtrl'
+		controller: 'PostCtrl', 
+		resolve: {
+			users: function(User){
+				// GET - > '/api/users'
+				return User.findAll()
+			}
+		}
 	})
 });
 

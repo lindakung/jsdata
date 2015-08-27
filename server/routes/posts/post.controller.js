@@ -30,8 +30,9 @@ module.exports = {
     .then(null, next)
   }, 
   destroy: function(req, res, next){
-    Post.findById(req.params.id).then(function(post) {
-      post.remove()
+    Post.remove({_id: req.params.id})
+    .then(function() {
+      res.status(204).end()
     })
     .then(null, next)
   }
