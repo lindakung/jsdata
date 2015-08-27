@@ -41,15 +41,13 @@ var app = angular.module('jsdataWorkshop', ['js-data', 'ui.router'])
       if (resource.relationFields && resource.relationFields.length){
         data = angular.copy(data);
         resource.relationFields.forEach(function(relation){
-          if(data[relation]) delete data[relation]
+          if(data[relation] && typeof data[relation] === 'object') data[relation] = data[relation]._id
         })
       }
       return data;
     }
 
   })
-  // .config(function(growlProvider) {
-  //   growlProvider.globalTimeToLive(4000);
-  // });
+
 
 

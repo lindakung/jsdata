@@ -1,10 +1,14 @@
 'use strict'; 
 
 app.config(function($stateProvider) {
-	$stateProvider.state('createPost', {
-		url: '/createPost',
+	$stateProvider.state('create', {
+		url: '/create/:userId',
 		templateUrl: 'js/create/create.html',
-		controller: 'CreateCtrl'
+		controller: 'CreateCtrl' 
+		/*
+				add a resolve block that has an author function which 
+				users $stateParams to retrieve the author object
+		*/
 	})
 })
 
@@ -13,22 +17,17 @@ app.controller('CreateCtrl', function($scope) {
 
 	$scope.previewTrue = false;
 
-	$scope.newPost = {
-		title: '',
-		body: '',
-		name: ''
-	}
-
 	$scope.preview = function() {
 		$scope.previewTrue = !$scope.previewTrue;
 	}
 
 	/*
 
-	create a function that 
-	1 - creates the user if it isn't already in the db
-	2 - persists the ng-modeled post object 
-	3 - changes the state to 'main' 
+	TODOS: 
+	1 - create the object that the form can use via ng-model
+  2 - create a function that 
+	 		a) persists the ng-modeled post object 
+			b) changes the state to 'main'  
 
 	*/
 	

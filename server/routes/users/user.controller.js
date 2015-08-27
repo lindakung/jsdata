@@ -6,7 +6,7 @@ var User = require('./user-model');
 
 module.exports = {
   index: function(req, res, next) {
-    User.find().populate('posts').exec()
+    User.find({}).exec()
     .then(function(users) {
       res.json(users);
     })
