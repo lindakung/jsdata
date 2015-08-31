@@ -1,7 +1,7 @@
 var userSeed = [
-	{ name: 'Amon', password: 'noma' },
-	{ name: 'Loke', password: 'ekol' },
-	{ name: 'Maia', password: 'aiam' }
+	{ username: 'Amon', password: 'noma' },
+	{ username: 'Loke', password: 'ekol' },
+	{ username: 'Maia', password: 'aiam' }
 ];
 
 var postSeed = [
@@ -58,111 +58,55 @@ var postSeed = [
 
 ];
 
-var commentSeed = [
-	{
-		body: "Awesome post!"
-	},
-
-	{
-		body: "Cool."
-	},
-
-	{
-		body: "Terrible."
-	},
-
-	{
-		body: "Boring!"
-	},
-
-	{
-		body: "Trolling..."
-	},
-
-	{
-		body: "This is unacceptable writing."
-	},
-
-	{
-		body: "This post is absolutely meaningless."
-	},
-
-	{
-		body: "Stop trying to make this happen."
-	},
-
-	{
-		body: "Excellent piece. Well done!"
-	},
-
-	{
-		body: "You really have a talent for finding well-written things online."
-	}
-
-];
 
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 
 var UserModel = require('./server/routes/users/user-model');
 var PostModel = require('./server/routes/posts/post-model');
-var CommentModel = require('./server/routes/comments/comment-model');
 
 mongoose.connect('mongodb://localhost/jsdata');
 
 var wipeDB = function() {
 
-	var models = [PostModel, UserModel, CommentModel];
+	var models = [PostModel, UserModel];
 
-	models.forEach(function(model) {
-		model.find({}).remove(function() {});
+	return Promise.map(models, function(model) {
+		model.remove({}).exec()
 	})
 
-	return Promise.resolve();
 
 };
 
 
 var seedDB = function() {
-
-	var posts, comments, users;
-
 	var randomizeUser = function(array) {
-	    var random = Math.floor(Math.random() * array.length);
-	    var randomUser = array[random];
-	    return randomUser;
+	  var random = Math.floor(Math.random() * array.length);
+	  var randomUser = array[random];
+	  return randomUser;
 	}
-
-
 	var randomizeData = function(array) {
 		var randomIndex = Math.floor(Math.random() * array.length);
-			var randomData = array[randomIndex];
-			array.splice(randomIndex,1);
-			return randomData;
+		var randomData = array[randomIndex];
+		array.splice(randomIndex,1);
+		return randomData;
 	}
 
-	PostModel.create(postSeed).then(function(allThePosts) {
-		posts = allThePosts;
-		return CommentModel.create(commentSeed);
-	}).then(function(userComments) {
-		comments = userComments
-		return UserModel.create(userSeed)
-	}).then(function(allTheUsers) {
-		users = allTheUsers
-		return posts
-	}).then(function(allPosts) {
-		return Promise.map(allPosts, function(currentPost) {
-			currentPost.author = randomizeUser(users);
-			currentPost.comments.push(randomizeUser(comments));
-			currentPost.comments.push(randomizeUser(comments));
-			currentPost.comments.push(randomizeUser(comments));
-			return currentPost.save();
+		
+	UserModel.create(userSeed)
+	.then(function(users){
+		return Promise.map(postSeed, function(p) {
+			p.author = randomizeUser(users);
+			return PostModel.create(p)
 		})
-	}).then(function() {
+	})
+	.then(function() {
 		process.kill(0)
-	}).then(null, function(err) {
+	})
+	.then(null, function(err) {
 		console.log(err)
 	})
+
 }
 
 mongoose.connection.once('open', function() {
