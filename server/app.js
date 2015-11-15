@@ -1,3 +1,5 @@
+"use strict";
+
 var path = require('path'),
 	express = require('express'),
 	bodyParser = require('body-parser'),
@@ -32,8 +34,8 @@ app.use(flash());
 
 
 
-app.use('/api/posts', require('./routes/posts'))
-app.use('/api/users', require('./routes/users'))
+app.use('/api/posts', require('./posts'))
+app.use('/api/users', require('./users'))
 
 app.get('/*', function(req, res) {
 	res.sendFile(indexHtmlPath);

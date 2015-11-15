@@ -5,10 +5,10 @@ var Post = require('./post-model');
 var User = require('../users/user-model');
 
 
-
 module.exports = {
   index: function(req, res, next) {
-    Post.find().exec().then(function(posts) {
+    Post.find().exec()
+    .then(function(posts) {
       res.json(posts);
     })
     .then(null, next)
