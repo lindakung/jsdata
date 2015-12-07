@@ -62,8 +62,8 @@ var postSeed = [
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 
-var UserModel = require('./server/routes/users/user-model');
-var PostModel = require('./server/routes/posts/post-model');
+var UserModel = require('./server/users/user-model');
+var PostModel = require('./server/posts/post-model');
 
 mongoose.connect('mongodb://localhost/jsdata');
 
@@ -100,7 +100,8 @@ var seedDB = function() {
 			return PostModel.create(p)
 		})
 	})
-	.then(function() {
+	.then(function(arr) {
+		if (arr.length) console.log('finished seeding!')
 		process.kill(0)
 	})
 	.then(null, function(err) {
